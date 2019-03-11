@@ -19,7 +19,7 @@ class FieldHandler
 	public:
 	
 		pairValueIndex GetLeftEdge(const auto & _field) const;
-		pairValueIndex GetRightEdge(const auto & _field, const size_t _leftEdge) const;
+		pairValueIndex GetRightEdge(const auto & _field, const int _leftEdge) const;
 		
 		size_t GetFilledOutAmount(const std::vector<size_t> & _field) const;
 };

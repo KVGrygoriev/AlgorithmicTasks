@@ -42,14 +42,13 @@ pairValueIndex FieldHandler::GetLeftEdge(const auto & _field) const
 	return edge;
 }
 
-pairValueIndex FieldHandler::GetRightEdge(const auto & _field, const size_t _leftEdge) const
+pairValueIndex FieldHandler::GetRightEdge(const auto & _field, const int _leftEdge) const
 {
 	pairValueIndex edge {0,0};
-	
-	for (size_t index = _field.size() - 1;
+	for (int index = static_cast<int>(_field.size() - 1);
 		index >= _leftEdge && edge.first <= _field[index];
 		--index)
-	{		
+	{
 		edge.first = _field[index];
 		edge.second = index;
 	}
