@@ -51,6 +51,13 @@ int main(int argc, char* argv[])
 		//string defaultField = "1,4,1,6,1,2,1"; //4
 		//string defaultField = "1,2,3,3,4,1,1,2,1,6,1,2,1"; //12
 		
+		//string defaultField = "5,4,3,2,1"; //0
+		//string defaultField = "2,1,2,4,3,4"; // 2
+		//string defaultField = "2,1,2,5,4,5,4,3,4"; //3
+		//string defaultField = "7, 2, 7, 1, 0, 1, 1, 2, 6, 4"; //30
+		//string defaultField = "6,5,2,4,3,5,6,5,2,4,3,5,4"; //17
+		//string defaultField = "1,2,4,1,2,1,3,2,1,3,1,1";
+		
 		cout << "Uses default field configuration " << defaultField << endl;
 		convertStringToContainer(defaultField, fieldConfiguration);
 	}
