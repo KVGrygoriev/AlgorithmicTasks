@@ -58,35 +58,20 @@ pairValueIndex FieldHandler::GetRightEdge(const auto & _field, const int _leftEd
 	return edge;
 }
 
+
 auto FieldHandler::FindLowlands(const auto & _field, const size_t _beginPos, const size_t _endPos) const
 {
 	vector<firstLastIndex> lowlands;
-	size_t index {0}, currentTopPosition {0};
-	size_t currentLowlandBeginPos = _beginPos;
-	bool goTop = false;
-
-	firstLastIndex currentItem {currentLowlandBeginPos,0};
-	
+	size_t index {0}, currentLowlandBeginPos {_beginPos};
+		
 	for (index = _beginPos + 1; index < _endPos; ++index)
 	{
-		
-		if (_field[index] > _field[currentLowlandBeginPos])
+		if (_field[index] >= _field[currentLowlandBeginPos])
 		{
-			currentTopPosition = index;
-			goTop = true;
-		}
-		else
-		{
-			if ((_field[index] < _field[currentLowlandBeginPos]) && goTop)
-			{
-				currentItem.second = currentTopPosition;
-				currentLowlandBeginPos = currentTopPosition;
-				goTop = false;
-
-				lowlands.push_back(currentItem);
-				
-				currentItem = {currentLowlandBeginPos,0};
-			}
+			if (index - currentLowlandBeginPos > 1)
+				lowlands.push_back(firstLastIndex(currentLowlandBeginPos, index));
+			
+			currentLowlandBeginPos = index;
 		}
 	}
 	
