@@ -1,0 +1,44 @@
+A Bloom filter (https://en.wikipedia.org/wiki/Bloom_filter) is a data structure designed to tell you,
+rapidly and memory-efficiently, whether an element is present in a set.
+The base data structure of a Bloom filter is a Bit Vector.
+
+
+1. Implement a bit vector using standard C byte array.
+The methods required:
+new(int vec_size)
+get_bit(n)
+set_bit(n, val)
+
+Each Bloom filter is constructed using two major parameters:
+m – size of bit vector in bits
+k – number of different hash functions used
+
+
+2. Please think of an approach to provide k different hash functions, for any k.
+Implement your decision (perhaps using a function template over i=0..k-1)
+the element being hashed should be an std::string.
+
+A Bloom filter insert operation consists of the following operations:
+- running several (k) different hash functions on the element, and converting each hash result to a
+number in the range of the bloom filter’s bit vector (‘k pointers’)
+- setting a value of ‘1’ for each of the k pointers
+
+A Bloom filter check operation consists of the following operations:
+- running several (k) different hash functions on the element, and converting each hash result to a
+number in the range of the bloom filter’s bit vector (‘k pointers’)
+- checking the value for each of the k pointers. If all values are ‘1’ - return true; otherwise return false
+
+
+3. Implement a ‘BloomFilter’ class, with insert and check operations
+constructor(k,m)
+insert(element)
+check(element)
+
+where k,m are selected externally; and element is a string.
+
+
+4. Given are two text files: h1.txt and h2.txt.
+Write a C++ program which does the following
+- generate a bloom filter (using your class from previous question) with k=23 and m=33548945, and
+inserts all elements (lines) in h1.txt into it.
+- check all lines in h2.txt against the bloom filter you created from h1. Print out the matching lines only.
