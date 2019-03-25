@@ -1,6 +1,9 @@
 #include <cstdio>
 #include <stdexcept>
 #include <iostream>
+#include <array>
+
+#include "MurmurHash3.h"
 
 using namespace std;
 
@@ -57,7 +60,7 @@ public:
 	}
 	
 	void Insert(const string & element)
-	{
+	{		
 	}
 	
 	bool Check(const string & element) const
@@ -67,6 +70,20 @@ public:
 	
 	
 private:
+
+	inline uint64_t Nth_hash(uint8_t n, uint64_t hash_A, uint64_t hash_B, uint64_t filter_size) 
+	{
+		return (hash_A + n * hash_B) % filter_size;
+	}
+
+	array<uint64_t, 2> Get_hash(const string & element) const
+	{
+		array<uint64_t, 2> hash_value;
+		
+		MurmurHash3_x64_128(element.c_str(), element.length(), 0, hash_value.data());
+		
+		return hash_value;
+	}
 
 	void Init_bit_array(size_t m)
 	{
