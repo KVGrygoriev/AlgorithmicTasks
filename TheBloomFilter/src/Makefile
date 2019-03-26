@@ -1,6 +1,6 @@
 VERSION=0.0.1
 CC=g++
-TARGET=TheBloomFilter
+TARGET=TheBloomFilterApp
 
 RFLAGS=-Wall -std=c++14 -DNDEBUG -O2
 
