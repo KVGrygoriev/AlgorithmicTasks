@@ -4,7 +4,7 @@ TARGET=TheBloomFilter
 
 RFLAGS=-Wall -std=c++14 -DNDEBUG -O2
 
-INCLUDES=-I.
+INCLUDES=-I. -I../include
 
 OPTFLAGS=$(RFLAGS)
 CCFLAGS=$(OPTFLAGS) $(INCLUDES)
